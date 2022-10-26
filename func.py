@@ -29,3 +29,4 @@ def filter_limits(y, x, wide, tall, value, matriz):
         suma += matriz[right][y]
         cont += 1
     return (suma/cont)
+
