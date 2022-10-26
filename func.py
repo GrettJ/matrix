@@ -1,7 +1,17 @@
-def process_matrix(lista):
-    pass
+def process_matrix(matriz):
+    wide = len(matriz)
+    tall = len(matriz[0])
+    matrix = []
+    for x, column in enumerate(matriz):
+        matrix.append([])
+        for y, value in enumerate(column):
+            result = filter_limits(y, x, wide, tall, value, matriz)
+            matrix[x].insert(y,result)
+    return matrix
 
-def filter_limits(elemento):
+def filter_limits(y, x, wide, tall, value, matriz):
+    suma = value
+    cont = 1
     up = y - 1
     down = y + 1
     left = x - 1
@@ -18,3 +28,4 @@ def filter_limits(elemento):
     if right < wide:
         suma += matriz[right][y]
         cont += 1
+    return (suma/cont)
