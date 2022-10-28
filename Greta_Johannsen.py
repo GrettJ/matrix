@@ -9,7 +9,7 @@ def catcher(entrada):
         return None
     if type(entrada[0]) == int or type(entrada[0]) == float:
         for x in entrada:
-            if type(x) != float or type(x) != int:
+            if type(x) != float and type(x) != int:
                 return False
             else:
                 return "List"
@@ -46,7 +46,7 @@ def process_matrix(matriz):
             if right < wide:
                 sum += matriz[right]
                 cont += 1
-            Matrix.append(sum/cont)
+            Matrix.append(round((sum/cont),2))
     elif catcher(matriz) == "Matrix":
         # una vez confirmado que es una lista de listas definimos los limites
         wide = len(matriz)
@@ -79,7 +79,7 @@ def process_matrix(matriz):
                     cont += 1
                 # despues de pasar todas las preguntas añado a la lista vacia
                 # en el mismo lugar del elemento inspeccionado
-                Matrix[x].insert(y, sum/cont)
+                Matrix[x].insert(y, round((sum/cont),2))
         # formateamos para ver el resultado como tabla
         Matrix = tabulate(Matrix, tablefmt="plain")
     elif catcher(matriz) == None:
@@ -89,6 +89,3 @@ def process_matrix(matriz):
         # devuelve un error, hay algun elemento en lo pasado que no es un numero
         raise ValueError("Only numerical matrices")
     return Matrix
-
-
-print(process_matrix([1, None]))
