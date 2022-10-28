@@ -8,7 +8,11 @@ def catcher(entrada):
     if entrada == []:
         return None
     if type(entrada[0]) == int or type(entrada[0]) == float:
-        return "List"
+        for x in entrada:
+            if type(x) != float or type(x) != int:
+                return False
+            else:
+                return "List"
     elif type(entrada[0]) == list:
         for x in entrada:
             for y in x:
@@ -85,3 +89,6 @@ def process_matrix(matriz):
         # devuelve un error, hay algun elemento en lo pasado que no es un numero
         raise ValueError("Only numerical matrices")
     return Matrix
+
+
+print(process_matrix([1, None]))
