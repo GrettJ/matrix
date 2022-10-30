@@ -8,18 +8,24 @@ def catcher(entrada):
     if entrada == []:
         return None
     if type(entrada[0]) == int or type(entrada[0]) == float:
+        answer = 0
         for x in entrada:
             if type(x) != float and type(x) != int:
-                return False
-            else:
-                return "List"
+                answer += 1
+        if answer > 0:
+            return False
+        else:
+            return "List"
     elif type(entrada[0]) == list:
+        answer = 0
         for x in entrada:
             for y in x:
                 if type(y) != float and type(y) != int:
-                    return False
-                else:
-                    return "Matrix"
+                    answer += 1
+        if answer > 0:
+            return False
+        else:
+            return "Matrix"
     else:
         return False
 
@@ -32,7 +38,7 @@ def process_matrix(matriz):
     """
     # Creamos una lista vacia donde guardamos los resultados
     Matrix = []
-    # llamamos al filtro. si devuelve que es una lista sencilla lo procesa de ese modo
+    # llamamos al filtro. Si devuelve que es una lista sencilla lo procesa de ese modo
     if catcher(matriz) == "List":
         wide = len(matriz)
         for x, value in enumerate(matriz):

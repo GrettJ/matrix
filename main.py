@@ -8,18 +8,24 @@ def catcher(entrada):
     if entrada == []:
         return None
     if type(entrada[0]) == int or type(entrada[0]) == float:
+        answer = 0
         for x in entrada:
             if type(x) != float and type(x) != int:
-                return False
-            else:
-                return "List"
+                answer += 1
+        if answer > 0:
+            return False
+        else:
+            return "List"
     elif type(entrada[0]) == list:
+        answer = 0
         for x in entrada:
             for y in x:
                 if type(y) != float and type(y) != int:
-                    return False
-                else:
-                    return "Matrix"
+                    answer += 1
+        if answer > 0:
+            return False
+        else:
+            return "Matrix"
     else:
         return False
 
@@ -92,4 +98,4 @@ def process_matrix(matriz):
 
 
 
-print(catcher([1,2,3,4,5,6,7,8,9]))
+print(catcher([[1,2,3,4,5,6,7,8,9],[1,2,"a"]]))
